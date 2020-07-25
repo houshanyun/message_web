@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h3>所有貼文</h3>
+
+<div>
+    <div class='post'>
+        {% for txt in txts %}
+        <div class="pbg">
+            <p>NickName:{{ txt.nick.name }}</p>
+            <p>{{ txt.txt }}</p>
+            <p>{{ moment(txt.nowtime).format('LLL') }}-{{ moment(txt.nowtime).fromNow() }}</p>
+        </div>
+        {% endfor %}    
+    </div>
+</div>
+{% endblock %}
+
+{% block form %}
+<div class="messages">
+    <nav>
+        <div class="nav">
+            <a href= {{ url_for('index') }}>Home</a>
+            <a href= {{ url_for('search') }}>Search</a>
+            {% if current_user.is_authenticated %}
+                <a href={{ url_for('logout') }}>Logout</a>
+            {% else %}
+                <a href={{ url_for('login') }}>Login</a>
+            {% endif %}
+
+        </div>
+    </nav>
+    <form action={{ url_for('index') }} method="POST">
+        <p>暱稱</p>
+        <input type="text" name="nick" required>
+        <p>輸入內容</p>
+        <textarea name="addtxt" id="" cols="20" rows="5" required></textarea><br>
+        <input type="submit" name="submit" value="送出">
+    </form>
+</div>
+{% endblock %}

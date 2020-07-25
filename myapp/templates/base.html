@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% block head %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href={{ url_for('static', filename='/images/a1.jpg')}} type="image/x-icon">
+    <link rel="stylesheet" href={{ url_for('static' , filename='style.css') }}>
+    <title>myapp</title>
+    {% endblock %}
+</head>
+<body>
+    {% for message in get_flashed_messages() %}
+        <div class="flash">{{ message }}</div>
+    {% endfor %}
+
+<section>    
+    <div class="content">
+        <div>
+            <img class="title_pic" src={{ url_for('static', filename='images/a2.jpg') }}>
+            <h1>留言板</h1>
+            <hr>
+            
+            <hr>
+        </div>
+        <div>
+            {% block content %}{% endblock %}
+        </div>    
+    </div>
+    <div>
+        {% block form %}{% endblock%}
+    </div>    
+</section>
+<footer class="foo">&copy;2020 houshanyun</footer>
+
+{% block scripts %}
+{{ moment.include_jquery() }}
+{{ moment.include_moment(local_js=url_for('static', filename='moment-with-locales.js')) }}
+{% endblock %}
+       
+</body>
+</html>

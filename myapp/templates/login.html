@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block content %}
+<p class="gohome"><a href= {{ url_for('index') }}>Home</a></p>
+<hr>
+<h3>Login</h3>
+<form class="login_form" method="POST">
+    <p>admin</p>
+    <input type="text" name='admin' required>
+    <p>password</p>
+    <input type="password" name="password" id=""><br>
+    <input type="submit" value="登入">
+</form><br>
+{% endblock%}

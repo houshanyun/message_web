@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<p class="gohome"><a href= {{ url_for('index') }}>Home</a></p>
+<hr>
+<form class="search_form" action={{ url_for('search')}} method="POST">
+    <input type="search" name="search" id="" required placeholder="請輸入暱稱...">
+    <input type="submit" name="submit" value="搜尋">
+</form><br>
+<hr><br>
+<div class='post'>   
+    {% for txt in nick_txt %}
+    <div class="pbg">
+        <p>{{ txt.txt }}-{{ txt.nick.name }}</p>
+        <p>{{ moment(txt.nowtime).format('LLL') }}-{{ moment(txt.nowtime).fromNow() }}</p>
+    </div>
+    {% endfor %}    
+</div>
+{% endblock %}
