@@ -35,7 +35,7 @@
 
 {% block scripts %}
 {{ moment.include_jquery() }}
-{{ moment.include_moment(local_js=url_for('static', filename='moment-with-locales.js')) }}
+{{ moment.include_moment() }}
 {% endblock %}
        
 </body>
