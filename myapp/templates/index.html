@@ -5,9 +5,9 @@
 <h3>所有貼文</h3>
 
 <div>
-    <div class='post'>
+    <div>
         {% for txt in txts %}
-        <div class="pbg">
+        <div>
             <p>NickName:{{ txt.nick.name }}</p>
             <p>{{ txt.txt }}</p>
             <p>{{ moment(txt.nowtime).format('LLL') }}-{{ moment(txt.nowtime).fromNow() }}</p>
@@ -18,9 +18,9 @@
 {% endblock %}
 
 {% block form %}
-<div class="messages">
+<div>
     <nav>
-        <div class="nav">
+        <div>
             <a href= {{ url_for('index') }}>Home</a>
             <a href= {{ url_for('search') }}>Search</a>
             {% if current_user.is_authenticated %}
