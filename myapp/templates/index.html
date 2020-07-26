@@ -11,8 +11,13 @@
             <p>NickName:{{ txt.nick.name }}</p>
             <p>{{ txt.txt }}</p>
             <p>{{ moment(txt.nowtime).format('LLL') }}-{{ moment(txt.nowtime).fromNow() }}</p>
+            <a href={{ url_for('comment', txt_id=txt.id) }}>回覆</a>
         </div>
-        {% endfor %}    
+        
+        {% endfor %}
+
+
+                
     </div>
 </div>
 {% endblock %}

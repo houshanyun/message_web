@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<p><a href= {{ url_for('index') }}>Home</a></p>
+<hr>
+<h3>回覆貼文</h3>
+<form method="POST">
+    <input type="text" name="nick" id="" required>
+    <textarea name="com_txt" id="" cols="30" rows="10"></textarea>
+    <input type="submit" value="送出">
+</form>  
+
+        {% for com_txt in com_txts %}
+            <div>
+                <p>{{ com_txt.a_com.txt}}</p>
+                <p>NickName:{{ com_txt.n_com.name }}</p>
+                <p>{{ com_txt.com_txt }}</p>
+                <p>{{ moment(com_txt.com_time).format('LLL') }}-{{ moment(com_txt.com_time).fromNow() }}</p>
+            </div>
+        {% endfor %}
+{% endblock %}
